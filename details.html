@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do Personagem</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="animations.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body style="background-color: rgb(7, 15, 5);"> 
+    <div class="container my-4 text-white mt-5">
+        <div class="row">
+            <div class="col-md-4">
+                <img id="character-image" src="" alt="Personagem" class="img-fluid">
+            </div>
+            <div class="col-md-8">
+                <h2 id="character-name"></h2>
+                <p id="character-status"></p>
+                <p id="character-species"></p>
+                <h3>Localização</h3>
+                <p id="character-location"></p>
+                <a href="index.html" class="btn btn-primary">Voltar à lista</a>
+            </div>
+        </div>
+    </div>    
+
+    <script src="scripts.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

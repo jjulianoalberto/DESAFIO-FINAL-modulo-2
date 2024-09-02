@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Personagens Rick and Morty</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="animations.css" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+  </head>
+  <body>
+    <header>
+      <img class="icon" src="./image/RICK_MORTY_ICON.png" alt="icon" />
+      <div class="title">
+        <h1><strong>API de Rick and Morty</strong></h1>
+        <form id="search-form" class="form-inline justify-content-center">
+          <div class="input-group">
+            <input
+              id="search-input"
+              class="form-control"
+              type="text"
+              placeholder="Pesquise"
+              aria-label="Search"
+            />
+            <div class="input-group-append">
+              <button id="search-button" class="btn btn-primary" type="submit">
+                <i class="fas fa-search"></i>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </header>
+
+    <div class="image2 pagination justify-content-center">
+      <div class="container">
+        <div id="characters-list" class="row"></div>
+
+        <nav class="navePage">
+          <ul id="pagination" class="pagination justify-content-center"></ul>
+        </nav>
+      </div>
+    </div>
+
+    <footer class="text-center text-white p-3">
+      <p>
+        <span class="fontColor">PERSONAGEM:</span> 826
+        <span class="fontColor">LOCALIZAÇÔES:</span> 14
+        <span class="fontColor">EPISÓDIOS:</span> 51
+      </p>
+      <br />
+      <br />
+      <p>
+        <span class="fontColor">Desenvolvido por:</span> Juliano Alberto Cesar
+        <span class="fontColor">em 2023</span>
+      </p>
+    </footer>
+
+    <script src="scripts.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>
