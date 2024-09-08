@@ -19,10 +19,8 @@ document.addEventListener("DOMContentLoaded", function () {
         const fetchedCharacters = response.data.results;
         totalPages = response.data.info.pages;
 
-        // Update pagesFetched with the current page's data
         pagesFetched[page] = fetchedCharacters;
 
-        // If there is a filter, apply it to the fetched data
         if (name) {
           filteredCharacters = fetchedCharacters;
         } else {
