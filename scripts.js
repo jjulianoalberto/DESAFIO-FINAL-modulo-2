@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let currentPage = 1;
   let totalPages = 0;
   let allCharacters = [];
+  let filteredCharacters = [];
   let pagesFetched = {};
 
   function fetchCharacters(page = 1, name = "") {
@@ -18,11 +19,19 @@ document.addEventListener("DOMContentLoaded", function () {
         const fetchedCharacters = response.data.results;
         totalPages = response.data.info.pages;
 
-        allCharacters = [
-          ...allCharacters.slice(0, (page - 1) * charactersPerPage),
-          ...fetchedCharacters,
-        ];
+        // Update pagesFetched with the current page's data
         pagesFetched[page] = fetchedCharacters;
+
+        // If there is a filter, apply it to the fetched data
+        if (name) {
+          filteredCharacters = fetchedCharacters;
+        } else {
+          allCharacters = [
+            ...allCharacters.slice(0, (page - 1) * charactersPerPage),
+            ...fetchedCharacters,
+          ];
+          filteredCharacters = allCharacters;
+        }
 
         displayCharacters(getCharactersForPage(page));
         setupPagination(totalPages, page);
@@ -64,7 +73,7 @@ document.addEventListener("DOMContentLoaded", function () {
         '<a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>';
       prevItem.addEventListener("click", function (event) {
         event.preventDefault();
-        fetchCharacters(currentPage - 1);
+        fetchCharacters(currentPage - 1, document.getElementById("search-input").value.trim());
       });
       pagination.appendChild(prevItem);
     }
@@ -78,7 +87,7 @@ document.addEventListener("DOMContentLoaded", function () {
       pageItem.innerHTML = `<a class="page-link" href="#">${i}</a>`;
       pageItem.addEventListener("click", function (event) {
         event.preventDefault();
-        fetchCharacters(i);
+        fetchCharacters(i, document.getElementById("search-input").value.trim());
       });
       pagination.appendChild(pageItem);
     }
@@ -90,7 +99,7 @@ document.addEventListener("DOMContentLoaded", function () {
         '<a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>';
       nextItem.addEventListener("click", function (event) {
         event.preventDefault();
-        fetchCharacters(currentPage + 1);
+        fetchCharacters(currentPage + 1, document.getElementById("search-input").value.trim());
       });
       pagination.appendChild(nextItem);
     }
@@ -99,7 +108,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function getCharactersForPage(page) {
     const start = (page - 1) * charactersPerPage;
     const end = start + charactersPerPage;
-    return allCharacters.slice(start, end);
+    return filteredCharacters.slice(start, end);
   }
 
   document
@@ -143,3 +152,4 @@ document.addEventListener("DOMContentLoaded", function () {
     console.error("ID do personagem não encontrado na URL.");
   }
 });
+
